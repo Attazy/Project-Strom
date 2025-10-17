@@ -1,0 +1,119 @@
+2025-06-03 15:06:47,456 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 15:06:47,477 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 16:35:09,021 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 16:35:09,049 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 16:35:09,069 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 16:35:11,217 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 21:57:27,593 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 21:57:27,594 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 21:57:27,623 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:03:50,513 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:03:50,573 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:03:50,575 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:03:52,729 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 22:09:02,728 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:09:02,729 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:09:02,730 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:09:07,026 - scanner - WARNING - Banner grab failed on port 8443: timed out
+2025-06-03 22:14:19,386 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:14:19,515 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:14:19,516 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:14:21,648 - scanner - WARNING - HTTP fingerprint failed on port 443: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: IP address mismatch, certificate is not valid for '103.105.190.24'. (_ssl.c:1007)
+2025-06-03 22:14:21,723 - scanner - WARNING - HTTP fingerprint failed on port 8443: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: IP address mismatch, certificate is not valid for '103.105.190.24'. (_ssl.c:1007)
+2025-06-03 22:24:59,275 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:24:59,314 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:24:59,347 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:25:01,480 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 22:25:01,480 - scanner - ERROR - Scan failed: 'AdvancedScanner' object has no attribute 'save_results'
+2025-06-03 22:26:53,045 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:26:53,045 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:26:53,065 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:26:58,145 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 22:26:58,145 - scanner - ERROR - Scan failed: 'AdvancedScanner' object has no attribute 'save_results'
+2025-06-03 22:28:56,614 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:28:56,624 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:28:56,625 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:28:58,778 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 22:29:58,304 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:29:58,334 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:29:58,344 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:30:00,463 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 22:30:00,463 - scanner - ERROR - Scan failed: 'AdvancedScanner' object has no attribute 'save_results'
+2025-06-03 22:31:21,003 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:31:21,023 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:31:21,053 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:31:23,189 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 22:31:23,189 - scanner - ERROR - Scan failed: 'AdvancedScanner' object has no attribute 'save_results'
+2025-06-03 22:32:31,218 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:32:31,219 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:32:31,220 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:32:33,367 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 22:46:50,746 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-03 22:46:50,756 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-03 22:46:50,836 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-06-03 22:46:55,862 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-03 23:16:07,139 - exploiter - ERROR - Exploitation failed: name 'random' is not defined
+2025-06-03 23:16:36,780 - exploiter - ERROR - Exploitation failed: name 'random' is not defined
+2025-06-03 23:18:30,910 - exploiter - ERROR - Exploitation failed: name 'random' is not defined
+2025-06-03 23:21:48,023 - exploiter - ERROR - Exploitation failed: name 'random' is not defined
+2025-06-03 23:22:42,959 - exploiter - ERROR - Exploitation failed: 'AdvancedExploiter' object has no attribute 'check_rce'
+2025-06-03 23:31:35,061 - exploiter - ERROR - Exploitation failed: 'AdvancedExploiter' object has no attribute 'check_rce'
+2025-06-04 19:24:58,050 - exploiter - ERROR - Exploitation failed: 'AdvancedExploiter' object has no attribute 'check_rce'
+2025-06-04 19:25:10,582 - exploiter - ERROR - Exploitation failed: 'AdvancedExploiter' object has no attribute 'check_rce'
+2025-06-04 21:08:31,965 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-22 20:51:04,080 - scanner - INFO - Port 21 - OPEN (SYN-ACK)
+2025-06-22 20:51:04,130 - scanner - INFO - Port 3306 - OPEN (SYN-ACK)
+2025-06-22 20:51:04,131 - scanner - INFO - Port 22 - OPEN (SYN-ACK)
+2025-06-22 20:51:04,133 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-06-22 20:51:04,134 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-06-22 20:51:06,011 - scanner - WARNING - Failed to fingerprint port 21: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-22 20:51:06,011 - scanner - WARNING - Failed to fingerprint port 22: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-06-22 20:51:06,405 - scanner - WARNING - Failed to fingerprint port 3306: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-08-07 10:21:03,477 - scanner - INFO - Port 80 - OPEN (SYN-ACK)
+2025-08-07 10:21:03,478 - scanner - INFO - Port 443 - OPEN (SYN-ACK)
+2025-08-07 10:21:03,487 - scanner - INFO - Port 8080 - OPEN (SYN-ACK)
+2025-08-07 10:21:03,488 - scanner - INFO - Port 8443 - OPEN (SYN-ACK)
+2025-08-07 10:21:05,582 - scanner - WARNING - Failed to fingerprint port 8080: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-08-07 10:21:05,583 - scanner - WARNING - Failed to fingerprint port 8443: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-08-07 14:41:22,865 - exploiter - ERROR - Exploitation failed: [Errno 5] Input/output error
+2025-08-14 09:49:23,877 - scanner - INFO - Port 22 - OPEN (SYN-ACK)
+2025-08-14 09:49:24,978 - scanner - WARNING - Failed to fingerprint port 22: 'AdvancedScanner' object has no attribute 'generic_banner'
+2025-10-16 21:22:20,455 - scanner - ERROR - Scan failed: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+Traceback (most recent call last):
+  File "C:\Users\attaj\Documents\TUGAS AKHIR DAN KP\strom\modules\scanner.py", line 117, in run
+    host_result = self.scan_host(host, ports)
+  File "C:\Users\attaj\Documents\TUGAS AKHIR DAN KP\strom\modules\scanner.py", line 132, in scan_host
+    syn_open = syn_scan(host, ports)
+  File "C:\Users\attaj\Documents\TUGAS AKHIR DAN KP\strom\core\network.py", line 143, in syn_scan
+    response = sr1(pkt, timeout=timeout, verbose=0)
+  File "C:\Users\attaj\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\scapy\sendrecv.py", line 663, in sr1
+    ans, _ = sr(*args, **kargs)
+             ~~^^^^^^^^^^^^^^^^
+  File "C:\Users\attaj\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\scapy\sendrecv.py", line 650, in sr
+    s = conf.L3socket(promisc=promisc, filter=filter,
+                      iface=iface, nofilter=nofilter)
+  File "C:\Users\attaj\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\scapy\arch\windows\native.py", line 114, in __init__
+    self.ins = socket.socket(af,
+               ~~~~~~~~~~~~~^^^^
+                             socket.SOCK_RAW,
+                             ^^^^^^^^^^^^^^^^
+                             self.proto)
+                             ^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2288.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+2025-10-16 21:24:16,046 - network - WARNING - SYN scan unavailable without raw socket privileges: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+2025-10-17 10:48:26,283 - strom - ERROR - Error: No module named 'websockets'
+2025-10-17 10:49:59,033 - strom - ERROR - Error: 'charmap' codec can't encode characters in position 2-66: character maps to <undefined>
+2025-10-17 10:51:51,332 - strom - ERROR - Error: No module named 'core.post_exploit_helper'
+2025-10-17 10:53:18,662 - strom - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\attaj\\Documents\\TUGAS AKHIR DAN KP\\strom\\core\\post_exploit_helper.py'
+2025-10-17 10:53:28,271 - strom - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\attaj\\Documents\\TUGAS AKHIR DAN KP\\strom\\core\\post_exploit_helper.py'
+2025-10-17 11:16:04,513 - strom - ERROR - Error: No module named 'core.post_exploit_helper'
+2025-10-17 11:20:06,226 - strom - ERROR - Error: No module named 'core.post_exploit_helper'
+2025-10-17 11:20:32,230 - strom - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\attaj\\Documents\\TUGAS AKHIR DAN KP\\strom\\core\\post_exploit_helper.py'
+2025-10-17 11:23:00,426 - strom - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\attaj\\Documents\\TUGAS AKHIR DAN KP\\strom\\core\\post_exploit_helper.py'
+2025-10-17 11:23:37,950 - strom - ERROR - Error: 
+2025-10-17 12:03:26,546 - strom - ERROR - Error: No module named 'dns'
+2025-10-17 12:04:13,928 - strom - ERROR - Error: No module named 'dns'
+2025-10-17 12:07:00,127 - strom - ERROR - Error: No module named 'dns'

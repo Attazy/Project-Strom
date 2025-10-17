@@ -1,0 +1,92 @@
+# STROM Framework Dependencies v1.0
+# Advanced Penetration Testing Framework
+# GitHub: https://github.com/Attazy/strom
+# ============================================
+
+# ============================================
+# CORE DEPENDENCIES (REQUIRED - WAJIB)
+# ============================================
+requests>=2.31.0
+termcolor>=2.3.0
+colorama>=0.4.6
+pyyaml>=6.0.1
+
+# ============================================
+# RECONNAISSANCE MODULE
+# ============================================
+dnspython>=2.4.2
+python-whois>=0.8.0
+netifaces>=0.11.0
+pyOpenSSL>=23.3.0
+
+# ============================================
+# WEB SCANNING & PARSING
+# ============================================
+beautifulsoup4>=4.12.2
+lxml>=4.9.3
+html5lib>=1.1
+
+# ============================================
+# CRYPTOGRAPHY & SECURITY
+# ============================================
+pycryptodome>=3.19.0
+
+# ============================================
+# POST-EXPLOITATION & ANDROID MODULE
+# ============================================
+Pillow>=10.1.0
+qrcode>=7.4.2
+pynacl>=1.5.0
+
+# ============================================
+# OPTIONAL FEATURES
+# ============================================
+
+# Keylogger (Post-Exploitation Module)
+pynput>=1.7.6
+
+# PDF Reports (Reporting Module)
+reportlab>=4.0.7
+
+# WebSocket for Android Module (Real-time communication)
+websockets>=12.0
+
+# Advanced Network Scanning
+scapy>=2.5.0
+
+# SSH Operations (Post-Exploitation)
+paramiko>=3.4.0
+
+# ============================================
+# API INTEGRATIONS (Optional - requires API keys)
+# ============================================
+# Uncomment ONLY if you have API keys:
+# shodan>=1.30.1
+# censys>=2.2.8
+
+# ============================================
+# BUILT-IN PYTHON MODULES (No install needed)
+# ============================================
+# The following are included with Python 3.8+:
+# - sqlite3 (database)
+# - socket (networking)
+# - json (data format)
+# - urllib (URL operations)
+# - hashlib (hashing)
+# - base64 (encoding)
+# - re (regex)
+# - threading (multi-threading)
+# - subprocess (process execution)
+# - os, sys (system operations)
+# - time, datetime (time functions)
+# - http.server (HTTP server for Android module)
+# - readline (command history)
+# - concurrent.futures (thread pooling)
+
+# ============================================
+# DEVELOPMENT TOOLS (Optional)
+# ============================================
+# Uncomment for development:
+# pytest>=7.4.3
+# black>=23.12.0
+# flake8>=6.1.0
