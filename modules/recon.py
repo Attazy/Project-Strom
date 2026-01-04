@@ -35,13 +35,21 @@ class AdvancedRecon:
         self.domain = None
         self.ip = None
         
-        # Common ports to scan
+        # Extended ports to scan (Advanced)
         self.common_ports = [
             21, 22, 23, 25, 53, 80, 110, 111, 135, 139, 143, 443, 445, 
-            993, 995, 1723, 3306, 3389, 5900, 8080, 8443, 8888
+            993, 995, 1723, 3306, 3389, 5900, 8080, 8443, 8888, 9000,
+            # Additional advanced ports
+            20, 21, 69, 123, 161, 162, 389, 636, 1433, 1521, 2049, 2375,
+            2376, 3000, 3128, 4443, 5000, 5432, 5984, 6379, 7001, 7002,
+            8000, 8001, 8008, 8009, 8081, 8082, 8088, 8181, 8443, 8888,
+            9001, 9090, 9200, 9300, 9443, 10000, 11211, 27017, 27018, 50000
         ]
         
-        # Subdomain wordlist (common subdomains)
+        # Top 1000 ports for deep scan
+        self.top_1000_ports = list(range(1, 1001))
+        
+        # Subdomain wordlist (common subdomains) - EXPANDED
         self.subdomain_wordlist = [
             'www', 'mail', 'ftp', 'localhost', 'webmail', 'smtp', 'pop', 'ns1', 'webdisk',
             'ns2', 'cpanel', 'whm', 'autodiscover', 'autoconfig', 'm', 'imap', 'test',
@@ -53,7 +61,30 @@ class AdvancedRecon:
             'www3', 'dns', 'search', 'staging', 'server', 'mx1', 'chat', 'wap', 'my',
             'svn', 'mail1', 'sites', 'proxy', 'ads', 'host', 'crm', 'cms', 'backup',
             'mx2', 'lyncdiscover', 'info', 'apps', 'download', 'remote', 'db', 'forums',
-            'store', 'relay', 'files', 'newsletter', 'app', 'live', 'owa', 'en', 'start'
+            'store', 'relay', 'files', 'newsletter', 'app', 'live', 'owa', 'en', 'start',
+            # ADVANCED ADDITIONS
+            'dev-api', 'staging-api', 'prod-api', 'test-api', 'api-dev', 'api-test',
+            'api-staging', 'api-prod', 'beta-api', 'alpha', 'jenkins', 'ci', 'cd',
+            'gitlab', 'bitbucket', 'jira', 'confluence', 'bamboo', 'artifactory',
+            'nexus', 'sonar', 'grafana', 'kibana', 'prometheus', 'consul', 'vault',
+            'k8s', 'kubernetes', 'docker', 'registry', 'harbor', 'rancher', 'portainer',
+            'git', 'svn', 'hg', 'cvs', 'legacy', 'old-api', 'v1', 'v2', 'v3', 'v4',
+            'internal', 'private', 'corp', 'vpn2', 'extranet', 'partners', 'suppliers',
+            'vendors', 'clients', 'customers', 'b2b', 'b2c', 'erp', 'uat', 'qa',
+            'preprod', 'production', 'sandbox', 'playground', 'training', 'academy',
+            'learn', 'help', 'helpdesk', 'tickets', 'status', 'monitoring', 'logs',
+            'metrics', 'analytics', 'tracking', 'events', 'webhooks', 'callbacks',
+            'oauth', 'sso', 'auth', 'identity', 'accounts', 'users', 'profiles',
+            'dashboard', 'panel', 'console', 'admin2', 'management', 'manager',
+            'assets', 'resources', 'uploads', 'downloads', 'documents', 'files2',
+            'storage', 'data', 'database', 'redis', 'mongo', 'postgres', 'elastic',
+            'cache', 'queue', 'jobs', 'workers', 'scheduler', 'cron', 'tasks',
+            'services', 'microservices', 'rest', 'graphql', 'soap', 'ws', 'wss',
+            'websocket', 'mqtt', 'amqp', 'kafka', 'rabbitmq', 'redis-cache',
+            'memcache', 'varnish', 'nginx', 'apache', 'iis', 'tomcat', 'jboss',
+            'wildfly', 'payara', 'glassfish', 'websphere', 'weblogic', 'coldfusion',
+            'phpmyadmin', 'adminer', 'pgadmin', 'mongo-express', 'redis-commander',
+            'flower', 'celery', 'airflow', 'superset', 'metabase', 'redash', 'tableau'
         ]
         
         # API keys (optional - will check if available)
@@ -64,16 +95,49 @@ class AdvancedRecon:
         self.use_shodan = config.get('reconnaissance.use_shodan', False) and bool(self.shodan_api)
         self.use_censys = config.get('reconnaissance.use_censys', False) and bool(self.censys_id)
         
-        # S3 bucket patterns
+        # S3 bucket patterns - EXPANDED
         self.s3_patterns = [
             '{domain}',
             '{domain}-backup',
+            '{domain}-backups',
             '{domain}-data',
             '{domain}-dev',
+            '{domain}-development',
             '{domain}-prod',
+            '{domain}-production',
             '{domain}-assets',
+            '{domain}-images',
+            '{domain}-uploads',
+            '{domain}-files',
+            '{domain}-documents',
+            '{domain}-media',
+            '{domain}-static',
+            '{domain}-staging',
+            '{domain}-test',
+            '{domain}-testing',
+            '{domain}-logs',
+            '{domain}-exports',
+            '{domain}-reports',
+            '{domain}-downloads',
             'backup-{domain}',
-            'data-{domain}'
+            'backups-{domain}',
+            'data-{domain}',
+            'dev-{domain}',
+            'prod-{domain}',
+            'assets-{domain}',
+            'uploads-{domain}',
+            'files-{domain}',
+            'logs-{domain}',
+            '{domain}.backup',
+            '{domain}.backups',
+            '{domain}.data',
+            '{domain}.files',
+            '{domain}-storage',
+            'storage-{domain}',
+            '{domain}-cdn',
+            'cdn-{domain}',
+            '{domain}-archive',
+            'archive-{domain}'
         ]
     
     def run(self):
@@ -135,8 +199,14 @@ class AdvancedRecon:
             print(colored("  [14] S3 Bucket Enumeration", 'yellow'))  # NEW
             print(colored("  [15] Shodan/Censys Lookup", 'yellow'))  # NEW
             print(colored("  [16] Google Dorking", 'yellow'))  # NEW
-            print(colored("  [17] Full Reconnaissance (All)", 'green'))
-            print(colored("  [18] Export Results", 'green'))
+            print(colored("  [17] ASN/BGP Lookup", 'magenta'))  # ADVANCED
+            print(colored("  [18] Certificate Transparency Logs", 'magenta'))  # ADVANCED
+            print(colored("  [19] OSINT Social Media", 'magenta'))  # ADVANCED
+            print(colored("  [20] Threat Intelligence Lookup", 'magenta'))  # ADVANCED
+            print(colored("  [21] Network Traceroute", 'magenta'))  # ADVANCED
+            print(colored("  [22] Cloud Provider Detection", 'magenta'))  # ADVANCED
+            print(colored("  [23] Full Reconnaissance (All)", 'green'))
+            print(colored("  [24] Export Results", 'green'))
             print(colored("  [0]  Exit", 'red'))
             print(colored("="*60, 'cyan'))
             
@@ -175,8 +245,20 @@ class AdvancedRecon:
             elif choice == '16':
                 self.google_dorking()
             elif choice == '17':
-                self.full_recon()
+                self.asn_bgp_lookup()
             elif choice == '18':
+                self.cert_transparency_logs()
+            elif choice == '19':
+                self.osint_social_media()
+            elif choice == '20':
+                self.threat_intelligence_lookup()
+            elif choice == '21':
+                self.network_traceroute()
+            elif choice == '22':
+                self.cloud_provider_detection()
+            elif choice == '23':
+                self.full_recon()
+            elif choice == '24':
                 self.export_results()
             elif choice == '0':
                 print(colored("[*] Exiting reconnaissance module...", 'yellow'))
@@ -768,6 +850,369 @@ class AdvancedRecon:
         print(colored("\n[!] Note: Execute these queries manually to avoid CAPTCHA", 'yellow'))
         
         self.results['google_dorks'] = dorks
+
+    def asn_bgp_lookup(self):
+        """ASN and BGP information lookup"""
+        print(colored("\n[+] ASN/BGP Lookup", 'magenta', attrs=['bold']))
+        print(colored("="*60, 'magenta'))
+        
+        if not self.ip:
+            print(colored("[!] No IP address available", 'red'))
+            return
+        
+        try:
+            # Using ipwhois for ASN lookup
+            print(colored(f"[*] Looking up ASN for {self.ip}...", 'cyan'))
+            
+            try:
+                from ipwhois import IPWhois
+                obj = IPWhois(self.ip)
+                results = obj.lookup_rdap()
+                
+                print(colored(f"\n[+] ASN: {results.get('asn', 'N/A')}", 'white'))
+                print(colored(f"[+] ASN CIDR: {results.get('asn_cidr', 'N/A')}", 'white'))
+                print(colored(f"[+] ASN Country: {results.get('asn_country_code', 'N/A')}", 'white'))
+                print(colored(f"[+] ASN Description: {results.get('asn_description', 'N/A')}", 'white'))
+                print(colored(f"[+] Network Name: {results.get('network', {}).get('name', 'N/A')}", 'white'))
+                print(colored(f"[+] Network CIDR: {results.get('network', {}).get('cidr', 'N/A')}", 'white'))
+                
+                self.results['asn_bgp'] = {
+                    'asn': results.get('asn'),
+                    'asn_cidr': results.get('asn_cidr'),
+                    'asn_country': results.get('asn_country_code'),
+                    'asn_description': results.get('asn_description'),
+                    'network': results.get('network')
+                }
+                
+                print(colored("\n[+] ASN/BGP lookup completed", 'green'))
+                
+            except ImportError:
+                print(colored("[!] ipwhois not installed. Install with: pip install ipwhois", 'yellow'))
+                print(colored("[*] Falling back to online lookup...", 'cyan'))
+                
+                # Fallback to online API
+                url = f"https://ipapi.co/{self.ip}/json/"
+                resp = requests.get(url, timeout=10)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    print(colored(f"\n[+] ASN: {data.get('asn', 'N/A')}", 'white'))
+                    print(colored(f"[+] Organization: {data.get('org', 'N/A')}", 'white'))
+                    print(colored(f"[+] Country: {data.get('country_name', 'N/A')}", 'white'))
+                    print(colored(f"[+] Region: {data.get('region', 'N/A')}", 'white'))
+                    print(colored(f"[+] City: {data.get('city', 'N/A')}", 'white'))
+                    
+                    self.results['asn_bgp'] = data
+                else:
+                    print(colored("[!] Online lookup failed", 'red'))
+                    
+        except Exception as e:
+            print(colored(f"[!] ASN lookup error: {str(e)}", 'red'))
+    
+    def cert_transparency_logs(self):
+        """Search Certificate Transparency logs for subdomains"""
+        print(colored("\n[+] Certificate Transparency Logs", 'magenta', attrs=['bold']))
+        print(colored("="*60, 'magenta'))
+        
+        print(colored(f"[*] Searching CT logs for {self.domain}...", 'cyan'))
+        
+        try:
+            # crt.sh API
+            url = f"https://crt.sh/?q=%.{self.domain}&output=json"
+            resp = requests.get(url, timeout=30)
+            
+            if resp.status_code == 200:
+                certs = resp.json()
+                subdomains = set()
+                
+                for cert in certs:
+                    name_value = cert.get('name_value', '')
+                    # Split by newlines (multiple domains in one cert)
+                    for domain in name_value.split('\n'):
+                        domain = domain.strip()
+                        if domain and not domain.startswith('*'):
+                            subdomains.add(domain)
+                
+                subdomains = sorted(list(subdomains))
+                
+                print(colored(f"\n[+] Found {len(subdomains)} unique domains in CT logs:", 'green'))
+                for i, subdomain in enumerate(subdomains[:50], 1):
+                    print(colored(f"  {i:3d}. {subdomain}", 'white'))
+                
+                if len(subdomains) > 50:
+                    print(colored(f"\n  ... and {len(subdomains) - 50} more", 'yellow'))
+                
+                self.results['cert_transparency'] = {
+                    'total': len(subdomains),
+                    'domains': subdomains
+                }
+                
+                print(colored(f"\n[+] Certificate Transparency search completed", 'green'))
+            else:
+                print(colored("[!] CT logs query failed", 'red'))
+                
+        except Exception as e:
+            print(colored(f"[!] CT logs error: {str(e)}", 'red'))
+    
+    def osint_social_media(self):
+        """OSINT social media reconnaissance"""
+        print(colored("\n[+] OSINT Social Media Reconnaissance", 'magenta', attrs=['bold']))
+        print(colored("="*60, 'magenta'))
+        
+        domain_name = self.domain.split('.')[0]
+        company_name = domain_name.capitalize()
+        
+        social_platforms = {
+            'LinkedIn': f"https://www.linkedin.com/search/results/companies/?keywords={company_name}",
+            'Twitter/X': f"https://twitter.com/{domain_name}",
+            'Facebook': f"https://www.facebook.com/{domain_name}",
+            'Instagram': f"https://www.instagram.com/{domain_name}",
+            'GitHub': f"https://github.com/{domain_name}",
+            'GitLab': f"https://gitlab.com/{domain_name}",
+            'Reddit': f"https://www.reddit.com/search/?q={company_name}",
+            'YouTube': f"https://www.youtube.com/@{domain_name}",
+            'TikTok': f"https://www.tiktok.com/@{domain_name}",
+            'Medium': f"https://medium.com/@{domain_name}",
+            'Dev.to': f"https://dev.to/{domain_name}",
+            'Stack Overflow': f"https://stackoverflow.com/users/{domain_name}",
+            'HackerOne': f"https://hackerone.com/{domain_name}",
+            'Bugcrowd': f"https://bugcrowd.com/{domain_name}",
+            'Discord': f"https://discord.com/servers/{domain_name}",
+            'Telegram': f"https://t.me/{domain_name}",
+        }
+        
+        print(colored("\n[*] Social Media Profile URLs to Check:", 'cyan'))
+        for platform, url in social_platforms.items():
+            print(colored(f"  {platform:20s} {url}", 'white'))
+        
+        # Quick availability check
+        print(colored("\n[*] Checking profile availability...", 'cyan'))
+        available_profiles = []
+        
+        def check_profile(platform, url):
+            try:
+                resp = requests.head(url, timeout=5, allow_redirects=True)
+                if resp.status_code == 200:
+                    return (platform, url, True)
+                return (platform, url, False)
+            except:
+                return (platform, url, False)
+        
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            futures = {executor.submit(check_profile, p, u): (p, u) for p, u in social_platforms.items()}
+            
+            for future in as_completed(futures):
+                platform, url, exists = future.result()
+                if exists:
+                    available_profiles.append({'platform': platform, 'url': url})
+                    print(colored(f"  [✓] {platform:20s} Profile Found", 'green'))
+                else:
+                    print(colored(f"  [✗] {platform:20s} Not Found", 'red'))
+        
+        if available_profiles:
+            print(colored(f"\n[+] Found {len(available_profiles)} active social media profiles", 'green'))
+            self.results['social_media'] = available_profiles
+        else:
+            print(colored("\n[-] No active profiles found (manual verification recommended)", 'yellow'))
+        
+        print(colored("\n[!] Note: Manual verification recommended for accurate results", 'yellow'))
+    
+    def threat_intelligence_lookup(self):
+        """Threat intelligence and reputation lookup"""
+        print(colored("\n[+] Threat Intelligence Lookup", 'magenta', attrs=['bold']))
+        print(colored("="*60, 'magenta'))
+        
+        if not self.ip:
+            print(colored("[!] No IP address available", 'red'))
+            return
+        
+        print(colored(f"[*] Checking threat intelligence for {self.ip}...", 'cyan'))
+        
+        threat_data = {}
+        
+        # AbuseIPDB-style check (using public APIs)
+        print(colored("\n[*] Reputation Databases:", 'cyan'))
+        
+        reputation_services = {
+            'VirusTotal': f"https://www.virustotal.com/gui/ip-address/{self.ip}",
+            'AbuseIPDB': f"https://www.abuseipdb.com/check/{self.ip}",
+            'Shodan': f"https://www.shodan.io/host/{self.ip}",
+            'Censys': f"https://search.censys.io/hosts/{self.ip}",
+            'IBM X-Force': f"https://exchange.xforce.ibmcloud.com/ip/{self.ip}",
+            'AlienVault OTX': f"https://otx.alienvault.com/indicator/ip/{self.ip}",
+            'Talos Intelligence': f"https://talosintelligence.com/reputation_center/lookup?search={self.ip}",
+            'GreyNoise': f"https://viz.greynoise.io/ip/{self.ip}",
+            'IPVoid': f"https://www.ipvoid.com/ip-blacklist-check/",
+            'Spamhaus': f"https://www.spamhaus.org/query/ip/{self.ip}",
+        }
+        
+        for service, url in reputation_services.items():
+            print(colored(f"  {service:20s} {url}", 'white'))
+        
+        # Basic blacklist check
+        print(colored("\n[*] Checking DNS blacklists...", 'cyan'))
+        blacklists = [
+            'zen.spamhaus.org',
+            'dnsbl.sorbs.net',
+            'bl.spamcop.net',
+            'b.barracudacentral.org',
+            'dnsbl-1.uceprotect.net'
+        ]
+        
+        listed_on = []
+        reversed_ip = '.'.join(reversed(self.ip.split('.')))
+        
+        for bl in blacklists:
+            try:
+                query = f"{reversed_ip}.{bl}"
+                socket.gethostbyname(query)
+                listed_on.append(bl)
+                print(colored(f"  [!] LISTED on {bl}", 'red'))
+            except socket.gaierror:
+                print(colored(f"  [✓] Clean on {bl}", 'green'))
+            except Exception:
+                pass
+        
+        if listed_on:
+            print(colored(f"\n[!] WARNING: IP is listed on {len(listed_on)} blacklists!", 'red', attrs=['bold']))
+            threat_data['blacklists'] = listed_on
+        else:
+            print(colored("\n[+] IP is not listed on checked blacklists", 'green'))
+        
+        threat_data['reputation_urls'] = reputation_services
+        self.results['threat_intelligence'] = threat_data
+        
+        print(colored("\n[+] Threat intelligence lookup completed", 'green'))
+    
+    def network_traceroute(self):
+        """Network traceroute to target"""
+        print(colored("\n[+] Network Traceroute", 'magenta', attrs=['bold']))
+        print(colored("="*60, 'magenta'))
+        
+        if not self.ip:
+            print(colored("[!] No IP address available", 'red'))
+            return
+        
+        print(colored(f"[*] Tracing route to {self.ip}...", 'cyan'))
+        print(colored("[!] This may take a moment...\n", 'yellow'))
+        
+        try:
+            import subprocess
+            import platform
+            
+            # Determine OS-specific traceroute command
+            if platform.system().lower() == 'windows':
+                cmd = ['tracert', '-h', '15', self.ip]
+            else:
+                cmd = ['traceroute', '-m', '15', '-w', '2', self.ip]
+            
+            # Execute traceroute
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+            
+            if result.returncode == 0 or result.stdout:
+                output = result.stdout
+                print(colored(output, 'white'))
+                
+                self.results['traceroute'] = {
+                    'target': self.ip,
+                    'output': output
+                }
+                
+                print(colored("\n[+] Traceroute completed", 'green'))
+            else:
+                print(colored(f"[!] Traceroute failed: {result.stderr}", 'red'))
+                
+        except subprocess.TimeoutExpired:
+            print(colored("[!] Traceroute timed out", 'red'))
+        except FileNotFoundError:
+            print(colored("[!] Traceroute command not found on system", 'red'))
+            print(colored("[*] Install traceroute: sudo apt install traceroute (Linux) or use system tracert (Windows)", 'yellow'))
+        except Exception as e:
+            print(colored(f"[!] Traceroute error: {str(e)}", 'red'))
+    
+    def cloud_provider_detection(self):
+        """Detect cloud provider and services"""
+        print(colored("\n[+] Cloud Provider Detection", 'magenta', attrs=['bold']))
+        print(colored("="*60, 'magenta'))
+        
+        if not self.ip:
+            print(colored("[!] No IP address available", 'red'))
+            return
+        
+        print(colored(f"[*] Detecting cloud provider for {self.ip}...", 'cyan'))
+        
+        # Cloud provider IP ranges (sample patterns)
+        cloud_indicators = {
+            'AWS': ['amazonaws.com', 'aws', 'ec2', 's3'],
+            'Azure': ['azure', 'microsoft', 'azurewebsites'],
+            'Google Cloud': ['google', 'gcp', 'googleusercontent'],
+            'DigitalOcean': ['digitalocean'],
+            'Cloudflare': ['cloudflare'],
+            'Akamai': ['akamai'],
+            'Alibaba Cloud': ['alibaba', 'alicloud'],
+            'Oracle Cloud': ['oracle', 'oraclecloud'],
+            'IBM Cloud': ['ibm', 'softlayer'],
+            'Heroku': ['heroku'],
+            'Vercel': ['vercel'],
+            'Netlify': ['netlify'],
+        }
+        
+        detected_providers = []
+        
+        # Check reverse DNS
+        try:
+            hostname = socket.gethostbyaddr(self.ip)[0].lower()
+            print(colored(f"\n[*] Hostname: {hostname}", 'white'))
+            
+            for provider, patterns in cloud_indicators.items():
+                for pattern in patterns:
+                    if pattern in hostname:
+                        detected_providers.append(provider)
+                        print(colored(f"[+] Detected: {provider}", 'green', attrs=['bold']))
+                        break
+        except:
+            print(colored("[!] Could not resolve hostname", 'yellow'))
+        
+        # Check HTTP headers for cloud services
+        url = self.target if self.target.startswith('http') else f"http://{self.domain}"
+        try:
+            resp = requests.get(url, timeout=10)
+            headers = dict(resp.headers)
+            
+            # Check for cloud-specific headers
+            if 'X-Amz-Cf-Id' in headers or 'X-Amz-Request-Id' in headers:
+                if 'AWS' not in detected_providers:
+                    detected_providers.append('AWS CloudFront')
+                    print(colored("[+] Detected: AWS CloudFront (via headers)", 'green'))
+            
+            if 'CF-Ray' in headers:
+                if 'Cloudflare' not in detected_providers:
+                    detected_providers.append('Cloudflare')
+                    print(colored("[+] Detected: Cloudflare (via headers)", 'green'))
+            
+            if 'X-Azure-Ref' in headers:
+                if 'Azure' not in detected_providers:
+                    detected_providers.append('Azure')
+                    print(colored("[+] Detected: Azure (via headers)", 'green'))
+            
+            server = headers.get('Server', '').lower()
+            if 'cloudflare' in server:
+                if 'Cloudflare' not in detected_providers:
+                    detected_providers.append('Cloudflare')
+                    print(colored("[+] Detected: Cloudflare (via Server header)", 'green'))
+        except:
+            pass
+        
+        if detected_providers:
+            print(colored(f"\n[+] Cloud Providers Detected: {', '.join(detected_providers)}", 'green', attrs=['bold']))
+            self.results['cloud_provider'] = {
+                'providers': detected_providers,
+                'ip': self.ip,
+                'hostname': hostname if 'hostname' in locals() else None
+            }
+        else:
+            print(colored("\n[-] No cloud provider detected (may be on-premise or unknown provider)", 'yellow'))
+        
+        print(colored("\n[+] Cloud provider detection completed", 'green'))
 
     def full_recon(self):
         """Perform full reconnaissance"""

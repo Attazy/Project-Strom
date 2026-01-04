@@ -1,5 +1,5 @@
-# STROM Framework Dependencies v1.0
-# Advanced Penetration Testing Framework
+# STROM Framework Dependencies v3.0 ADVANCED
+# Advanced Penetration Testing Framework - No Limitations Edition
 # GitHub: https://github.com/Attazy/strom
 # ============================================
 
@@ -10,83 +10,210 @@ requests>=2.31.0
 termcolor>=2.3.0
 colorama>=0.4.6
 pyyaml>=6.0.1
+urllib3>=2.1.0
+certifi>=2023.11.17
 
 # ============================================
-# RECONNAISSANCE MODULE
+# RECONNAISSANCE MODULE (ADVANCED)
 # ============================================
 dnspython>=2.4.2
 python-whois>=0.8.0
 netifaces>=0.11.0
 pyOpenSSL>=23.3.0
+python-nmap>=0.7.1
+shodan>=1.31.0
+censys>=2.2.8
+ipwhois>=1.2.0
+geoip2>=4.7.0
+maxminddb>=2.4.0
 
 # ============================================
-# WEB SCANNING & PARSING
+# WEB SCANNING & PARSING (ADVANCED)
 # ============================================
 beautifulsoup4>=4.12.2
 lxml>=4.9.3
 html5lib>=1.1
+selenium>=4.16.0
+playwright>=1.40.0
+pyppeteer>=1.0.2
 
 # ============================================
-# CRYPTOGRAPHY & SECURITY
+# CRYPTOGRAPHY & SECURITY (ADVANCED)
 # ============================================
 pycryptodome>=3.19.0
+cryptography>=41.0.7
+bcrypt>=4.1.2
+argon2-cffi>=23.1.0
+pyotp>=2.9.0
+jwt>=1.3.1
+pyjwt>=2.8.0
 
 # ============================================
-# POST-EXPLOITATION & ANDROID MODULE
+# EXPLOITATION & FUZZING (ADVANCED)
+# ============================================
+pwntools>=4.11.0
+ropgadget>=7.4
+capstone>=5.0.1
+keystone-engine>=0.9.2
+unicorn>=2.0.1
+angr>=9.2.80
+z3-solver>=4.12.4.0
+radare2-r2pipe>=1.8.0
+
+# ============================================
+# NETWORK & TRAFFIC ANALYSIS (ADVANCED)
+# ============================================
+scapy>=2.5.0
+impacket>=0.11.0
+pyshark>=0.6
+dpkt>=1.9.8
+netfilterqueue>=1.1.0
+mitmproxy>=10.1.6
+
+# ============================================
+# POST-EXPLOITATION & ANDROID MODULE (ADVANCED)
 # ============================================
 Pillow>=10.1.0
 qrcode>=7.4.2
 pynacl>=1.5.0
-
-# ============================================
-# OPTIONAL FEATURES
-# ============================================
-
-# Keylogger (Post-Exploitation Module)
-pynput>=1.7.6
-
-# PDF Reports (Reporting Module)
-reportlab>=4.0.7
-
-# WebSocket for Android Module (Real-time communication)
-websockets>=12.0
-
-# Advanced Network Scanning
-scapy>=2.5.0
-
-# SSH Operations (Post-Exploitation)
 paramiko>=3.4.0
+pynput>=1.7.6
+pyautogui>=0.9.54
+opencv-python>=4.8.1.78
+pytesseract>=0.3.10
+python-telegram-bot>=20.7
+discord.py>=2.3.2
 
 # ============================================
-# API INTEGRATIONS (Optional - requires API keys)
+# WEB EXPLOITATION TOOLS (ADVANCED)
 # ============================================
-# Uncomment ONLY if you have API keys:
-# shodan>=1.30.1
-# censys>=2.2.8
+sqlmap-dev>=1.7.11
+wfuzz>=3.1.0
+XSStrike>=3.1.5
+commix>=3.7
+tplmap>=0.5
+
+# ============================================
+# REVERSE ENGINEERING (ADVANCED)
+# ============================================
+pefile>=2023.2.7
+pyelftools>=0.30
+python-magic>=0.4.27
+yara-python>=4.3.1
+androguard>=3.4.0
+
+# ============================================
+# WIRELESS & BLUETOOTH (ADVANCED)
+# ============================================
+bluepy>=1.3.0
+pybluez>=0.30
+wifi>=0.3.8
+wireless>=0.3.3
+
+# ============================================
+# MACHINE LEARNING & AI (ADVANCED)
+# ============================================
+scikit-learn>=1.3.2
+tensorflow>=2.15.0
+torch>=2.1.2
+transformers>=4.36.2
+numpy>=1.26.2
+pandas>=2.1.4
+
+# ============================================
+# DATABASE EXPLOITATION (ADVANCED)
+# ============================================
+pymongo>=4.6.1
+redis>=5.0.1
+psycopg2-binary>=2.9.9
+mysql-connector-python>=8.2.0
+cx-Oracle>=8.3.0
+pymssql>=2.2.10
+
+# ============================================
+# CLOUD SECURITY (ADVANCED)
+# ============================================
+boto3>=1.34.16
+azure-identity>=1.15.0
+google-cloud-storage>=2.14.0
+kubernetes>=28.1.0
+docker>=7.0.0
+
+# ============================================
+# STEGANOGRAPHY & FORENSICS (ADVANCED)
+# ============================================
+stegano>=0.11.3
+exifread>=3.0.0
+python-magic>=0.4.27
+volatility3>=2.5.0
+
+# ============================================
+# REPORTING & VISUALIZATION (ADVANCED)
+# ============================================
+reportlab>=4.0.7
+matplotlib>=3.8.2
+plotly>=5.18.0
+jinja2>=3.1.2
+weasyprint>=60.2
+fpdf2>=2.7.7
+
+# ============================================
+# WEB FRAMEWORKS & SERVERS (ADVANCED)
+# ============================================
+flask>=3.0.0
+flask-socketio>=5.3.5
+fastapi>=0.108.0
+uvicorn>=0.25.0
+websockets>=12.0
+aiohttp>=3.9.1
+
+# ============================================
+# CODE ANALYSIS & STATIC SCANNING (ADVANCED)
+# ============================================
+bandit>=1.7.6
+safety>=2.3.5
+pylint>=3.0.3
+semgrep>=1.52.0
+
+# ============================================
+# OSINT & RECON (ADVANCED)
+# ============================================
+tweepy>=4.14.0
+beautifuldork>=0.1.0
+google>=3.0.0
+theharvester>=4.4.4
+recon-ng>=5.1.2
+
+# ============================================
+# PAYLOAD GENERATION (ADVANCED)
+# ============================================
+pycryptodome>=3.19.0
+pyinstaller>=6.3.0
+nuitka>=1.9.7
+cx-Freeze>=6.15.14
+
+# ============================================
+# API & REST TESTING (ADVANCED)
+# ============================================
+httpx>=0.26.0
+graphene>=3.3
+ariadne>=0.22.0
 
 # ============================================
 # BUILT-IN PYTHON MODULES (No install needed)
 # ============================================
 # The following are included with Python 3.8+:
-# - sqlite3 (database)
-# - socket (networking)
-# - json (data format)
-# - urllib (URL operations)
-# - hashlib (hashing)
-# - base64 (encoding)
-# - re (regex)
-# - threading (multi-threading)
-# - subprocess (process execution)
-# - os, sys (system operations)
-# - time, datetime (time functions)
-# - http.server (HTTP server for Android module)
-# - readline (command history)
-# - concurrent.futures (thread pooling)
+# - sqlite3, socket, json, urllib, hashlib, base64
+# - re, threading, subprocess, os, sys, time, datetime
+# - http.server, readline, concurrent.futures, asyncio
+# - multiprocessing, ctypes, struct, zlib, gzip
+# - xml, csv, configparser, logging, collections
 
 # ============================================
 # DEVELOPMENT TOOLS (Optional)
 # ============================================
-# Uncomment for development:
-# pytest>=7.4.3
-# black>=23.12.0
-# flake8>=6.1.0
+pytest>=7.4.3
+black>=23.12.0
+flake8>=6.1.0
+mypy>=1.8.0
+coverage>=7.4.0

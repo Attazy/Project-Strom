@@ -117,3 +117,14 @@ PermissionError: [WinError 10013] An attempt was made to access a socket in a wa
 2025-10-17 12:03:26,546 - strom - ERROR - Error: No module named 'dns'
 2025-10-17 12:04:13,928 - strom - ERROR - Error: No module named 'dns'
 2025-10-17 12:07:00,127 - strom - ERROR - Error: No module named 'dns'
+2025-10-17 17:06:25,580 - web_scanner - ERROR - Scanner error: 'high'
+2025-10-17 17:10:08,351 - exploiter - INFO - Testing authorized - Target: http://103.105.190.24, Auth Code: 999, Tester: zyriegrow
+2025-10-17 17:10:38,056 - exploiter - INFO - RCE Command executed: whoami
+2025-10-17 17:10:50,165 - exploiter - INFO - RCE Command executed: --&&ls%%
+2025-10-17 17:11:00,583 - exploiter - INFO - RCE Command executed: shutdown
+2025-10-17 17:11:23,168 - exploiter - INFO - Testing authorized - Target: http://103.105.190.24, Auth Code: 214, Tester: asfa
+2025-10-17 17:13:59,324 - bypass - ERROR - Bypass module error: 'WAFBypass' object has no attribute '_analyze_captcha'
+2025-10-17 17:14:16,397 - bypass - ERROR - Bypass module error: 'WAFBypass' object has no attribute '_test_rate_limiting'
+2025-10-17 17:19:05,605 - strom - ERROR - Error: 'command'
+2025-10-17 17:28:12,496 - strom - ERROR - Error: invalid literal for int() with base 10: 'Attazy123456'
+2025-10-18 19:31:25,982 - strom - ERROR - Error: 

